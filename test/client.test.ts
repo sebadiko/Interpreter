@@ -29,7 +29,7 @@ test('Devolver valor 16', () => {
     console.log(JSON.stringify(TOKENS))
 
     // Creación de un array de tipo IAbstractExpression
-    const AST: IAbstractExpression[] = [] 
+    const AST: IAbstractExpression[] = []
     AST.push(new Subtract(new Numeral(TOKENS[0]), new Numeral(TOKENS[2]))) // 8 - 3
     AST.push(new Add(AST[0], new Numeral(TOKENS[4]))) // ^ + 7
     AST.push(new Subtract(AST[1], new Numeral(TOKENS[6]))) // ^ - 1
@@ -46,10 +46,10 @@ test('Devolver valor 39', () => {
 
 
     const TOKENS = SENTENCE.split(' ')
-    console.log(JSON.stringify(TOKENS))
+    //console.log(JSON.stringify(TOKENS))
 
     // Creación de un array de tipo IAbstractExpression
-    const AST: IAbstractExpression[] = [] 
+    const AST: IAbstractExpression[] = []
     AST.push(new Subtract(new Numeral(TOKENS[0]), new Numeral(TOKENS[2]))) // 100 - 40
     AST.push(new Subtract(AST[0], new Numeral(TOKENS[4]))) // ^ -7
     AST.push(new Subtract(AST[1], new Numeral(TOKENS[6]))) // ^ - 2
@@ -60,3 +60,9 @@ test('Devolver valor 39', () => {
 
     expect((AST_ROOT as IAbstractExpression).interpret()).toBe(39);
 });
+
+test('Devolver valor 39', () => {
+    const aux: IAbstractExpression = new Subtract(new Numeral("200"), new Numeral("150"))
+
+    expect((aux as IAbstractExpression).interpret()).toBe(50);
+})
